@@ -1,0 +1,2 @@
+# solchess
+CLI chess solitaire

@@ -219,19 +219,6 @@ int randint(int range)
 	return rand() % range;
 }
 
-void draw_board2(char *board)
-{
-	printf(" %sA  B  C  D%s\n", KRED, KNRM);
-	for (int i=0; i<strlen(board); i++)
-	{
-		printf(" %c ",board[i]);
-		if ((i + 1)%4 == 0)
-		{
-			printf("%s%d%s\n",KRED, (i + 1)/4, KNRM);
-		}
-	}
-	printf("\n");
-}
 
 void draw_board(char *board)
 {

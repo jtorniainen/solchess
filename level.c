@@ -3,13 +3,13 @@
 #include <string.h>
 #include <stdlib.h>
 #include "utils.h"
+#include "level.h"
 
 
-int main()
+void read_level(char *level)
 {
 	// Trying to read level specifications from file
 	FILE *fp;
-	char *line = NULL;
 	char *pieces = NULL;
 	char *positions = NULL;
 	size_t len = 0;
@@ -35,27 +35,29 @@ int main()
 	// Convert positions to integer array
 	int pos[num_of_pieces];
 
-	printf("PIECES=%sPOSITIONS=%s", pieces, positions);
-
-	for (int i = 0; i < strlen(pieces) - 1; i++)
-	{
-		printf("%c\n", pieces[i]);
-	}
-	printf("done (len=%d)\n", strlen(pieces));
-
-
-	printf("STARTING POSITIONS:\n");
 	for (int i = 0; i < strlen(positions) - 2; i+=2)
 	{
 		char loc[2];
 		strncpy(loc, positions + i, 2);
-		/*int pos_int = get_position(loc);*/
 		pos[(int)(i/2)] = get_position(loc);
-
-		/*printf("%c%c -> %d\n", loc[0], loc[1], pos_int);*/
 	}
-	printf("done (len=%d)\n", strlen(positions));
 
-	return 0;
+	for (int i = 0; i < strlen(level) - 1; i++)
+	{
+		for (int j = 0; j < strlen(pieces) - 1; j++)
+		{
+			if (i == pos[j])
+			{
+				level[i] = pieces[j];
+			}
+		}
+	}
 }
 
+/*int main()*/
+/*{*/
+	/*char new_level[17] = "                ";*/
+	/*read_level(new_level);*/
+	/*printf("Final level: >%s<\n", new_level);*/
+	/*return 0;*/
+/*}*/

@@ -5,6 +5,7 @@
 #include <ctype.h>
 #include <math.h>
 #include "utils.h"
+#include "level.h"
 
 #define MAX_DATA 100
 
@@ -103,6 +104,7 @@ int check_pawn_move(int target, int dest)
 	}
 }
 
+
 int check_king_move(int target, int dest)
 {
 	int x0 = get_x(target);
@@ -123,6 +125,7 @@ int check_king_move(int target, int dest)
 	}
 }
 
+
 int check_queen_move(int target, int dest)
 {
 	int rook = check_rook_move(target, dest);
@@ -138,6 +141,7 @@ int check_queen_move(int target, int dest)
 		return 0;
 	}
 }
+
 
 // ---------------------- //
 // Check if move is valid //
@@ -172,10 +176,12 @@ int check_move(char piece, int target, int dest)
 	return 0;
 }
 
+
 void place_piece(char *board, int index, char piece)
 {
 	board[index] = piece;
 }
+
 
 void move_piece(char *board, int target, int dest)
 {
@@ -190,6 +196,7 @@ void move_piece(char *board, int target, int dest)
 		printf("Illegal move, sucker!\n");
 	}
 }
+
 
 int check_for_victory(char *board)
 {
@@ -210,7 +217,6 @@ int check_for_victory(char *board)
 	}
 
 	return 1;
-
 }
 
 
@@ -245,6 +251,7 @@ void draw_board(char *board)
 	printf("\n");
 }
 
+
 int valid_pos(char *pos)
 {
 	printf("checking %s\n", pos);
@@ -261,6 +268,7 @@ int valid_pos(char *pos)
 		return 0;
 	}
 }
+
 
 void parse_move(char *board, char *string)
 {
@@ -307,11 +315,12 @@ int main()
 	char input[MAX_DATA];
 	/*char board[17] = "++++++++++++++++";*/
 	char board[17] = "                ";
+	read_level(board);
 	srand(time(NULL));
 	//place_piece(board, randint(16), KING);
-	place_piece(board, 1, KING);
-	place_piece(board, 2, PAWN);
-	place_piece(board, 7, PAWN);
+	/*place_piece(board, 1, KING);*/
+	/*place_piece(board, 2, PAWN);*/
+	/*place_piece(board, 7, PAWN);*/
 	while (1)
 	{
 		system("clear");

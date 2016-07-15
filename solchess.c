@@ -177,12 +177,6 @@ int check_move(char piece, int target, int dest)
 }
 
 
-void place_piece(char *board, int index, char piece)
-{
-	board[index] = piece;
-}
-
-
 void move_piece(char *board, int target, int dest)
 {
 	char piece = board[target];
@@ -234,10 +228,10 @@ void draw_board(char *board)
 	{
 		if ((i + 1 + row)%2 == 0)
 		{
-			textcolor(BRIGHT, RED, WHITE);
+			textcolor(BRIGHT, WHITE, BLACK);
 		} else
 		{
-			textcolor(BRIGHT, RED, MAGENTA);
+			textcolor(BRIGHT, WHITE, BLUE);
 		}
 		printf("%c",board[i]);
 		textcolor(RESET, WHITE, BLACK);
@@ -317,10 +311,6 @@ int main()
 	char board[17] = "                ";
 	read_level(board);
 	srand(time(NULL));
-	//place_piece(board, randint(16), KING);
-	/*place_piece(board, 1, KING);*/
-	/*place_piece(board, 2, PAWN);*/
-	/*place_piece(board, 7, PAWN);*/
 	while (1)
 	{
 		system("clear");
